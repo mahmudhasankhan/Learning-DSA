@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/d/NSU--1821448042/coding/CSE225L/Assignment 01-task1/Triangle.h
+Triangle.hpp
+/cygdrive/d/NSU--1821448042/coding/CSE225L/Assignment 01-task1/Triangle.hpp
+
+/cygdrive/d/NSU--1821448042/coding/CSE225L/Assignment 01-task1/Triangle.hpp
+math.h
+-
+Triangle.h
+/cygdrive/d/NSU--1821448042/coding/CSE225L/Assignment 01-task1/Triangle.h
+
+/cygdrive/d/NSU--1821448042/coding/CSE225L/Assignment 01-task1/main.cpp
+iostream
+-
+Triangle.h
+/cygdrive/d/NSU--1821448042/coding/CSE225L/Assignment 01-task1/Triangle.h
+
