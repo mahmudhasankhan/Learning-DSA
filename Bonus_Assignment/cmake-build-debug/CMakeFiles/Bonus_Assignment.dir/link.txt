@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/Bonus_Assignment.dir/main.cpp.o  -o Bonus_Assignment.exe -Wl,--out-implib,libBonus_Assignment.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
