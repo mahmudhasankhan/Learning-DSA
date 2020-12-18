@@ -3,7 +3,7 @@ using namespace std;
 int main() {
 //    std::cout << "Hello, World!" << std::endl;
     int n=0;
-    cout<<"Enter the size of the array"<<endl;
+    cout<<"Enter the size of the array : "<<endl;
     cin>>n;
     int **arr = new int* [n];
     for (int i = 0; i <n ; ++i) {
