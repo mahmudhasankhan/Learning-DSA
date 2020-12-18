@@ -1,3 +1,0 @@
-/cygdrive/d/NSU--1821448042/coding/CSE225L/Mid-Task 02/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/d/NSU--1821448042/coding/CSE225L/Mid-Task 02/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/d/NSU--1821448042/coding/CSE225L/Mid-Task 02/cmake-build-debug/CMakeFiles/MidAssignment_Task_02.dir
