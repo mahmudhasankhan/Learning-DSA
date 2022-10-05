@@ -1,2 +1,7 @@
 cmake-build-debug
 .idea
+
+# python virtual env
+myenv/
+
+
