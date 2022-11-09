@@ -56,7 +56,7 @@ if __name__ == '__main__':
     llist.append('D')
     llist.prepend('E')
     
-    # I can choose which node I want before
+    # I can choose which node I want after
     current_node = llist.head
     while True:
         if current_node.data == 'B':
