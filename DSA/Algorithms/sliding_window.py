@@ -1,24 +1,25 @@
 """__summary__:
-Sliding window algorithm
+Sliding window algorithm -> taken from youtube
 Question: Find Maximum sum of k sub arrays in O(n) time.
 """
 
 
 class Solution:
-    def sliding_window(self, sub_array_size: int, array: list[int]) -> int:
+    def sliding_window(self, k: int, array: list[int]) -> list[int]:
+        # Sum up the first subarray and add it to the result
+        curr_sub_array = sum(array[:k])
+        result = [curr_sub_array]
 
-        if sub_array_size > len(array):
-            return None
+        # To get each subsequent subarray, add the next value
+        # in the list and remove the fist value
 
-        list_of_max = []
-        window_sum = sum(array[0:sub_array_size])
-        list_of_max.append(window_sum)
+        for i in range(1, len(array) - k + 1):
+            curr_sub_array = curr_sub_array - array[i - 1]
+            curr_sub_array = curr_sub_array + array[i + k - 1]
 
-        for index in range(len(array) - sub_array_size):
-            val = list_of_max[index] - array[index] + array[index + sub_array_size]
-            list_of_max.append(val)
+            result.append(curr_sub_array)
 
-        return max(list_of_max)
+        return max(result)
 
 
 if __name__ == "__main__":
