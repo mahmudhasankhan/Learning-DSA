@@ -22,7 +22,7 @@ class BinaryTree(object):
         elif traversal_type == "postorder":
             return self.post_order_print(self.root, "")
         else:
-            return f"Traversal Type {traversal_type} is not supported"
+            return f"Traversal Type {traversal_type} is not supported."
 
     # DFS: Preorder
     def pre_order_print(self, start, traversal) -> str:
