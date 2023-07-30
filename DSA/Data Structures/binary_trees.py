@@ -51,7 +51,8 @@ class BinaryTree(object):
             traversal += str(start.value) + "->"
         return traversal
 
-#           Tree
+#           Binary Tree
+#
 #            10
 #           /  \
 #          2    3
