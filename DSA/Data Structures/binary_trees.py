@@ -56,37 +56,37 @@ class BinaryTree(object):
             return f"Traversal Type {traversal_type} is not supported"
 
     # DFS: Preorder
-    def pre_order_print(self, start, traversal) -> str:
+    def pre_order_print(self, root: Node, traversal: str) -> str:
         """Root->Left->Right"""
-        if start:
-            traversal += str(start.value) + "->"
-            traversal = self.pre_order_print(start.left, traversal)
-            traversal = self.pre_order_print(start.right, traversal)
+        if root:
+            traversal += str(root.value) + "->"
+            traversal = self.pre_order_print(root.left, traversal)
+            traversal = self.pre_order_print(root.right, traversal)
         return traversal
 
     # DFS: Inorder
-    def in_order_print(self, start, traversal) -> str:
+    def in_order_print(self, root: Node, traversal: str) -> str:
         """Left->Root->Right"""
-        if start:
-            traversal = self.in_order_print(start.left, traversal)
-            traversal += str(start.value) + "->"
-            traversal = self.in_order_print(start.right, traversal)
+        if root:
+            traversal = self.in_order_print(root.left, traversal)
+            traversal += str(root.value) + "->"
+            traversal = self.in_order_print(root.right, traversal)
         return traversal
 
     # DFS: Postorder
-    def post_order_print(self, start, traversal) -> str:
+    def post_order_print(self, root, traversal) -> str:
         """Left->Right->Root"""
-        if start:
-            traversal = self.post_order_print(start.left, traversal)
-            traversal = self.post_order_print(start.right, traversal)
-            traversal += str(start.value) + "->"
+        if root:
+            traversal = self.post_order_print(root.left, traversal)
+            traversal = self.post_order_print(root.right, traversal)
+            traversal += str(root.value) + "->"
         return traversal
 
-    def level_order_print(self, start) -> str:
-        if start is None:
+    def level_order_print(self, root: Node) -> str:
+        if root is None:
             return
         queue = Queue()
-        queue.enqueue(start)
+        queue.enqueue(root)
         traversal = ""
 
         while queue:
@@ -98,10 +98,10 @@ class BinaryTree(object):
                 queue.enqueue(node.right)
         return traversal
 
-    def level_order_print_with_deque(self, start) -> str:
-        if start is None:
+    def level_order_print_with_deque(self, root: Node) -> str:
+        if root is None:
             return
-        queue = deque([start])
+        queue = deque([root])
         traversal = ""
         while queue:
             traversal += str(queue[-1].value) + "->"
@@ -110,16 +110,28 @@ class BinaryTree(object):
                 queue.appendleft(node.left)
             if node.right:
                 queue.appendleft(node.right)
-
         return traversal
 
-        #           Tree
-        #
-        #            10
-        #           /  \
-        #          2    3
-        #         / \  / \
-        #        4  10 10 20
+    def maximum_depth_with_recursive_dfs(self, root: Node) -> int:
+        if root is None:
+            return 0
+        return 1 + max(self.maximum_depth(root.left),
+                       self.maximum_depth(root.right))
+
+    def maximum_depth_with_bfs(self, root: Node) -> int:
+        if root is None:
+            return 0
+        queue = deque([root])
+        count = 0
+        while queue:
+
+            #           Tree
+            #
+            #            10
+            #           /  \
+            #          2    3
+            #         / \  / \
+            #        4  10 10 20
 
 
 def main():
@@ -136,6 +148,7 @@ def main():
     print(f" Post-order: {tree.print_tree('postorder')}")
     print(f" Level-order: {tree.print_tree('levelorder')}")
     print(f" Level-order-deque: {tree.print_tree('levelorder-deque')}")
+    print(f"Maximum Depth of a tree: {tree.maximum_depth(tree.root)}")
 
 
 if __name__ == "__main__":
