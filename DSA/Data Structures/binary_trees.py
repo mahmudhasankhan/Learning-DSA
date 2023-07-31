@@ -1,6 +1,33 @@
 """Binary Tree, Python Implementation.
 DFS traversals using recursion, with different order variations"""
 
+from collections import deque
+
+
+class Queue(object):
+    def __init__(self):
+        self.items = []
+
+    def enqueue(self, item):
+        self.items.insert(0, item)
+
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop()
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1].value
+
+    def __len__(self):
+        return self.size()
+
+    def size(self):
+        return len(self.items)
+
 
 class Node(object):
     def __init__(self, value):
@@ -21,6 +48,10 @@ class BinaryTree(object):
             return self.in_order_print(self.root, "")
         elif traversal_type == "postorder":
             return self.post_order_print(self.root, "")
+        elif traversal_type == "levelorder":
+            return self.level_order_print(self.root)
+        elif traversal_type == "levelorder-deque":
+            return self.level_order_print_with_deque(self.root)
         else:
             return f"Traversal Type {traversal_type} is not supported"
 
@@ -51,12 +82,44 @@ class BinaryTree(object):
             traversal += str(start.value) + "->"
         return traversal
 
-#           Tree
-#            10
-#           /  \
-#          2    3
-#         / \  / \
-#        4  10 10 20
+    def level_order_print(self, start) -> str:
+        if start is None:
+            return
+        queue = Queue()
+        queue.enqueue(start)
+        traversal = ""
+
+        while queue:
+            traversal += str(queue.peek()) + "->"
+            node = queue.dequeue()
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
+        return traversal
+
+    def level_order_print_with_deque(self, start) -> str:
+        if start is None:
+            return
+        queue = deque([start])
+        traversal = ""
+        while queue:
+            traversal += str(queue[-1].value) + "->"
+            node = queue.pop()
+            if node.left:
+                queue.appendleft(node.left)
+            if node.right:
+                queue.appendleft(node.right)
+
+        return traversal
+
+        #           Tree
+        #
+        #            10
+        #           /  \
+        #          2    3
+        #         / \  / \
+        #        4  10 10 20
 
 
 def main():
@@ -71,6 +134,8 @@ def main():
     print(f" Pre-order: {tree.print_tree('preorder')}")
     print(f" In-order: {tree.print_tree('inorder')}")
     print(f" Post-order: {tree.print_tree('postorder')}")
+    print(f" Level-order: {tree.print_tree('levelorder')}")
+    print(f" Level-order-deque: {tree.print_tree('levelorder-deque')}")
 
 
 if __name__ == "__main__":
