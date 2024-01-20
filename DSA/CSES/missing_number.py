@@ -15,5 +15,14 @@ def main():
         print(x)
 
 
+def new():
+    # math solution
+    num = int(input())
+    comp_list = [int(x) for x in input().split()]
+    sum_val = sum(comp_list)
+    total_sum = int((num) * (num + 1) / 2)
+    print(total_sum - sum_val)
+
+
 if __name__ == "__main__":
-    main()
+    new()
